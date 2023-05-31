@@ -1,0 +1,46 @@
+Questão 1
+
+1.
+MATCH (b:Usuario {nome: 'Bob'})-[:AMIGO]->(a)
+RETURN a.nome
+
+'Charlie'
+
+2.
+MATCH (u:Usuario)-[:POSTOU]->(p2:Postagem {titulo: 'Memórias da Tarde'})
+RETURN u.nome
+
+'Bob'
+
+3.
+MATCH (u:Usuario)-[:POSTOU]->(p:Postagem)
+WHERE u.idade > 35
+RETURN u.nome
+
+(no changes, no records
+
+---------------------------------------------------------------------
+
+Questão 2:
+
+1.
+MATCH (u:Usuario)
+RETURN u
+ORDER BY u.idade DESC
+LIMIT 1
+
+resposta: 'Eve'
+
+2.
+MATCH (u:Usuario)
+WHERE u.idade > 30
+RETURN count(u) as quantidade
+
+resposta: 3
+
+3.
+MATCH (u:Usuario)
+WITH avg(u.idade) as media
+RETURN media
+
+Resposta: 35.0
